@@ -1,6 +1,13 @@
 # clj-sampler
 
-FIXME: write description
+Minimal clojure gui app that implements a audio sampler.
+Push a button ... it plays a sample.
+
+To start probably just .wav files, and use alsa output.
+
+Maybe in future offer jack (w/jjack) and diff audio sample format
+(eg. flac mp3 ogg etc.)
+
 
 ## Usage
 
