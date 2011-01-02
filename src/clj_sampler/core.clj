@@ -1,12 +1,14 @@
-(ns clj-sampler.core)
+(ns clj-sampler.core
+  (:import (javax.swing JFrame JPanel JButton)))
 
+  ;;(import '(javax.swing JFrame JPanel JButton))
 
 ;;(def frame (JFrame. "Hello Frame"))
 ;;(.setSize frame 200 200)
 ;;(.setVisible frame true)
 
 
-(import '(javax.swing JFrame JPanel JButton))
+
 
 (def button (JButton. "Click Me!"))
 
