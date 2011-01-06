@@ -1,14 +1,12 @@
 (ns clj-sampler.core
-  (:import (javax.swing JFrame JPanel JButton)))
+  (:import (javax.swing JFrame
+                        JPanel
+                        JButton
+                        JOptionPane)
+           (java.awt.event.ActionListener)))
 
-  ;;(import '(javax.swing JFrame JPanel JButton))
-
-;;(def frame (JFrame. "Hello Frame"))
-;;(.setSize frame 200 200)
-;;(.setVisible frame true)
-
-
-
+;;(import 'java.awt.event.ActionListener)
+;;(import 'javax.swing.JOptionPane)
 
 (def button (JButton. "Click Me!"))
 
@@ -16,6 +14,17 @@
              (.add button)))
 
 (def frame (doto (JFrame. "Hello Frame")
-             (.setSize 200 200)
+             (.setSize 600 800)
              (.setContentPane panel)
              (.setVisible true)))
+
+(defn say-hello []
+  (JOptionPane/showMessageDialog
+   nil "Hello, World!" "Greeting"
+   JOptionPane/INFORMATION_MESSAGE))
+
+(import 'java.awt.event.ActionListener)
+(def act (proxy [ActionListener] []
+           (actionPerformed [event] (say-hello))))
+
+(.addActionListener button act)
