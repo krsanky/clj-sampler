@@ -1,4 +1,4 @@
-(ns clj-sampler.core
+(ns clj-sampler.gui
   (:import (javax.swing JFrame
                         JPanel
                         JButton
