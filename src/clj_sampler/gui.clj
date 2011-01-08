@@ -6,9 +6,6 @@
            java.awt.event.ActionListener)
   (:require [clj-sampler.audio :as audio]))
 
-;;(import 'java.awt.event.ActionListener)
-;;(import 'javax.swing.JOptionPane)
-
 (def button (JButton. "Click Me!"))
 
 (def panel (doto (JPanel.)
@@ -24,10 +21,9 @@
    nil "Hello, World!" "Greeting"
    JOptionPane/INFORMATION_MESSAGE))
 
-;;(import 'java.awt.event.ActionListener)
-
 (def act (proxy [ActionListener] []
            (actionPerformed [event] (say-hello))))
            ;;(actionPerformed [event] (audio/play1))))
 
 (.addActionListener button act)
+
