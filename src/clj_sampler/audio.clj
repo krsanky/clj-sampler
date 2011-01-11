@@ -6,21 +6,8 @@
            java.io.File))
 
 
-;; (import javax.sound.sampled.LineEvent$Type)
-;; javax.sound.sampled.LineEvent$Type
-;; user=> (LineEvent$Type/STOP)
-;; #<Type Stop>
-
-
-;; javax.sound.sampled
-;; Interface LineListener
-;; javax.sound.sampled.LineEvent
-
 (def snd-file (File. "/home/wise/data/AUDIO/clj-sampler/ut_radio/male/male91.wav"))
-
-;;AudioInputStream audioIn = AudioSystem.getAudioInputStream(soundFile);
 (def aud-in (AudioSystem/getAudioInputStream snd-file))
-
 
 ;; // at this point, there is a native thread created 'behind the scenes'
 ;; // unless I added this, it never goes away:
@@ -43,37 +30,21 @@
                                        (do
                                          (.stop (.getLine evt))
                                          (println "op"))
-                                       (println "no-op")))))
+                                       (println "no-op"))))) ;;nil
     clip))
 
-                                     ;;(if (= (.getType evt) LineEvent$Type/STOP)
-                                     ;;  (.close (.getLine evt))
-                                     ;;  (print "no-op")))))
-;;clip))
 
+;;;; Here's code to stop and replay for successive plays:
+;;  // Play or Re-play the sound effect from the beginning, by rewinding.
+;;    public void play() {
+;;       if (volume != Volume.MUTE) {
+;;          if (clip.isRunning())
+;;             clip.stop();   // Stop the player if it is still running
+;;          clip.setFramePosition(0); // rewind to the beginning
+;;          clip.start();     // Start playing
+;;       }
+;;    }
 
-;;(if (< number 100) "yes" "no"))
-
-
-;;(doto (javax.swing.JFrame.)
-;;  (addKeyListener (proxy [java.awt.event.KeyListener] []
-;;       (keyPressed [e] (println (.getKeyChar e) " key pressed"))
-;;       (keyReleased [e] (println (.getKeyChar e) " key released"))
-;;       (keyTyped [e] (println (.getKeyChar e) " key typed"))))
-;;  (setVisible true))
-
-;;  ; Clojure
-;;  (import '(javax.swing JFrame JButton JOptionPane))
-;;  (import '(java.awt.event ActionListener))
-;;
-;;  (let [frame (JFrame. "Hello Swing")
-;;       button (JButton. "Click Me")]
-;;   (.addActionListener button
-;;     (proxy [ActionListener] []
-;;       (actionPerformed [evt]
-;;         (JOptionPane/showMessageDialog  nil
-;;            (str "<html>Hello from <b>Clojure</b>. Button "
-;;                 (.getActionCommand evt) " clicked.")))))
 
 
 ;;(defn listen-temp [source target f]
@@ -85,9 +56,10 @@
 ;;         (changedUpdate [e] )))))
 
 
+(def clip (get-clip))
 
-;;(defn play1 [clip]
-;;  (.start clip))
+(defn play1 []
+  (.start clip))
 ;;(.drain clip)
 ;;(.stop clip))
 
