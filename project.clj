@@ -7,7 +7,7 @@
                  [jgoodies/forms "1.4.0"]]
 
   :dev-dependencies [[swank-clojure "1.2.0"]]
-  :main clj-sampler.main)
+  :main clj-sampler.gui.main)
 
 
 

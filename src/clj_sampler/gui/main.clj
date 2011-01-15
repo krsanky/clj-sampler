@@ -1,4 +1,4 @@
-(ns clj-sampler.gui
+(ns clj-sampler.gui.main
   (:import
    javax.swing.JButton
    javax.swing.JFrame
@@ -15,15 +15,19 @@
 
 (defn startup
   []
-  (let [items     (take 5 (iterate inc 0))
-        frame     (JFrame. "Example GUI")
+  (let [frame     (JFrame. "clj sampler")
+
         layout    (FormLayout. "fill:default:grow" ;; cols
                                "pref,3dlu,pref")   ;; rows
+
         cc        (CellConstraints.)
         done?     (atom false)
         quit      (JButton. "quit")
         dummy     (JButton. "dummy")
-        bbar      (ButtonBarFactory/buildCenteredBar (into-array [quit dummy]))
+
+        load-sample (JButton. "load")
+
+        bbar      (ButtonBarFactory/buildCenteredBar (into-array [load-sample dummy quit]))
 
         panel     (-> (PanelBuilder. layout (FormDebugPanel.))  ;;rm the panel arg to use default "non-debug"
                       (doto (.setDefaultDialogBorder)
@@ -43,10 +47,18 @@
                               (.setVisible false)
                               (.dispose)))))
 
+    ;; I find that setPreferredSize tends to work more often than setSize
+    ;; although as jwentig has mentioned it is not guaranteed. A subsequent
+    ;; call to pack(), validate() or invalidate() often overrides any
+    ;; previous call to setting the size anyway.
     (doto frame
+      ;;(.setSize 341 300)
+
       (.setDefaultCloseOperation JFrame/DISPOSE_ON_CLOSE)
       (-> .getContentPane (.add panel))
+
       (.pack)
+      (.setSize 341 300)
       (.setVisible true))))
 
 
