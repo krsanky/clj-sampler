@@ -18,3 +18,23 @@ FIXME: write
 Copyright (C) 2010 FIXME
 
 Distributed under the Eclipse Public License, the same as Clojure.
+
+
+# jgoodies notes:
+
+~~~
+
+columnSpec      :=   [columnAlignment:] size [:resizeBehavior]
+rowSpec         :=   [rowAlignment:] size [:resizeBehavior]
+columnAlignment :=   LEFT | CENTER | RIGHT | FILL | L | C | R | F
+rowAlignment    :=   TOP | CENTER | BOTTOM | FILL | T | C | B | F
+size            :=   constantSize | componentSize | boundedSize
+componentSize   :=   MIN | PREF | DEFAULT | M | P | D
+constantSize    :=   <integer>integerUnit | <double>doubleUnit
+integerUnit     :=   PX | PT | DLU
+doubleUnit      :=   IN | MM | CM
+boundedSize     :=   MIN(constantSize;componentSize)
+                := | MAX(constantSize;componentSize)
+resizeBehavior  :=   NONE | GROW | GROW(<double>) | G(<double>)
+
+~~~
