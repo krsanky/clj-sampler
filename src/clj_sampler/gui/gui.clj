@@ -1,7 +1,7 @@
 (ns clj-sampler.gui
   (:import
-   javax.swing.JButton
-   javax.swing.JFrame
+   (javax.swing JButton
+                JFrame)
    com.jgoodies.forms.layout.CellConstraints
    com.jgoodies.forms.layout.FormLayout
    com.jgoodies.forms.factories.ButtonBarFactory
