@@ -52,22 +52,16 @@
                               (.dispose)))))
 
 
+    ;; don't need do-swing we are already in EDT ????
     (defn load-sample-do
       [_]
-      (do-swing
-       (let [file (filechooser/get-file-selection)]
-         (prn file "<<<here>>>")
-         (audio/set-clip file))))
-
+      (let [file (filechooser/get-file-selection)]
+        (prn file "<<<here>>>")
+        (audio/set-clip file)))
     (add-action-listener load-sample load-sample-do)
 
-
-    ;; PLAY
-    ;; (def act (proxy [ActionListener] []
-    ;;            ;;(actionPerformed [event] (say-hello))))
-    ;;            (actionPerformed [event] (audio/play1))))
-    ;; (.addActionListener button act)
-    (add-action-listener play (fn [_] (do-swing (audio/play-clip))))
+    ;; don't need do-swing we are already in EDT ????
+    (add-action-listener play (fn [_] (audio/play-clip)))
 
 
     ;; I find that setPreferredSize tends to work more often than setSize
